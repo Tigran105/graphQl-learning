@@ -1,14 +1,13 @@
 const express = require("express")
+const fs = require("fs")
 const {graphqlHTTP} = require("express-graphql");
 const cors = require("cors")
 const schema = require("./schema")
-const users = [
-    {id:1, username:"hrach", age:25},
-    {id:2, username:"murad", age:45},
-    {id:3, username:"anton", age:18},
-    {id:4, username:"vlad", age:32},
-]
-//
+
+const fileName = "./db.json"
+let data = fs.readFileSync(fileName);
+let users = JSON.parse(data);
+
 const app = express()
 app.use(cors())
 
@@ -28,8 +27,17 @@ const root = {
         return users.find(user => +user.id === +id)
     },
     createUser: ({input}) => {
+
         const user = createUser(input)
-        users.push(user)
+        users.push(createUser(input))
+
+        fs.writeFile(fileName, JSON.stringify(users), err => {
+            if(err) {
+                console.log("ERROR")
+                throw err;
+            }
+            console.log("New data added");
+        });
         return user
     }
 }
