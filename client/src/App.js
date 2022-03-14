@@ -1,16 +1,10 @@
 import './App.css';
-import {useMutation, useQuery} from "@apollo/client";
-import {GET_ALL_USERS, GET_ONE_USERS} from "./query/user";
-import {useEffect, useState} from "react";
-import {CREATE_USER} from "./mutation/user";
+import {useQuery} from "@apollo/client";
+import {GET_ONE_USERS} from "./query/user";
+import CreateUser from "./components/CreateUser";
+import Users from "./components/Users";
 
 function App() {
-    const {
-        data,
-        loading,
-        // error,
-        refetch
-    } = useQuery(GET_ALL_USERS)
     const {
         data: oneUser,
         // loading: loadingOneUser,
@@ -21,66 +15,14 @@ function App() {
             id: 2
         }
     })
-    console.log(oneUser, "------------------");
-    const [newUser] = useMutation(CREATE_USER)
-    const [users, setUsers] = useState([])
-    const [username, setUsername] = useState('')
-    const [age, setAge] = useState(0)
-    useEffect(() => {
-        if (!loading) {
-            setUsers(data.getAllUsers)
-        }
-    }, [data])
+    console.log(oneUser, "+++++++++++++++++++++++++++++");
 
-    const addUser = (e) => {
-        e.preventDefault()
-        newUser({
-            variables: {
-                input: {
-                    username, age
-                }
-            }
-        }).then(({data}) => {
-            setUsername("")
-            setAge(0)
-        })
-    }
-    const getAll = e => {
-        e.preventDefault()
-        refetch()
-    }
 
-    if (loading) {
-        return <h1>Loading...</h1>
-    }
     return (
 
-        <div>
-            <form>
-                <input
-                    value={username}
-                    onChange={e => setUsername(e.target.value)}
-                    type="text"/>
-                <input
-                    value={age}
-                    onChange={e => setAge(+e.target.value)}
-                    type="number"/>
-                <div className="btns">
-                    <button
-                        onClick={(e) => addUser(e)}
-                    >Создать
-                    </button>
-                    <button
-                        onClick={e => getAll(e)}
-                    >Получить
-                    </button>
-                </div>
-            </form>
-            <div>
-                {users.map(user =>
-                    <div key={user.id} className="user">{user.id}. {user.username} {user.age}</div>
-                )}
-            </div>
+        <div style={{maxWidth: "70vw", position:"relative"}}>
+            <CreateUser/>
+            <Users/>
         </div>
     );
 }

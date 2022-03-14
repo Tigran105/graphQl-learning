@@ -7,3 +7,10 @@ export const CREATE_USER = gql`
             }
     }
 `
+export const EDIT_USER = gql`
+    mutation editUser($input:UserInput){
+            editUser(input: $input) {
+                id, username, age
+            }
+    }
+`

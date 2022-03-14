@@ -32,14 +32,36 @@ const root = {
         users.push(createUser(input))
 
         fs.writeFile(fileName, JSON.stringify(users), err => {
-            if(err) {
+            if (err) {
                 console.log("ERROR")
                 throw err;
             }
             console.log("New data added");
         });
         return user
+    },
+    editUser: ({input}) => {
+        let newUsers = []
+        users.map(user => {
+            if (+user.id === +input.id) {
+                user = input
+                return newUsers.push(user)
+            } else {
+                return newUsers.push(user)
+            }
+
+        })
+        fs.writeFile(fileName, JSON.stringify(newUsers), err => {
+            if (err) {
+                console.log("ERROR")
+                throw err;
+            }
+            this.getAllUsers()
+            console.log("User was edited");
+        });
+        return newUsers
     }
+
 }
 
 app.use("/graphql", graphqlHTTP({
