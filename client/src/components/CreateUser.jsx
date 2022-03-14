@@ -21,7 +21,7 @@ const CreateUser = () => {
             }
         }).then(() => {
             setUsername("")
-            setAge(0)
+            setAge("")
             refetch()
         })
     }
