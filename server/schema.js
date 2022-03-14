@@ -28,6 +28,10 @@ const schema = buildSchema(`
         content: String!     
     }
     
+     input DeleteInput {
+        id:ID
+     }
+    
     type Query {
         getAllUsers: [User]
         getUser(id:ID): User
@@ -36,6 +40,7 @@ const schema = buildSchema(`
     type Mutation {
         createUser(input: UserInput): User 
         editUser(input: UserInput): User
+        deleteUser(input: DeleteInput): User
     }
     
 `)

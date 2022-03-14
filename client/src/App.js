@@ -3,20 +3,15 @@ import {useQuery} from "@apollo/client";
 import {GET_ONE_USERS} from "./query/user";
 import CreateUser from "./components/CreateUser";
 import Users from "./components/Users";
-
 function App() {
     const {
         data: oneUser,
-        // loading: loadingOneUser,
-        // error: errorOneUSer,
-        // refetch: refetchOneUSer
     } = useQuery(GET_ONE_USERS, {
         variables: {
             id: 2
         }
     })
     console.log(oneUser, "+++++++++++++++++++++++++++++");
-
 
     return (
 

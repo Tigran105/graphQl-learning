@@ -14,3 +14,10 @@ export const EDIT_USER = gql`
             }
     }
 `
+export const DELETE_USER = gql`
+    mutation delete($input:DeleteInput){
+            deleteUser(input: $input) {
+                id
+            }
+    }
+`

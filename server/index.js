@@ -12,7 +12,10 @@ const app = express()
 app.use(cors())
 
 const createUser = (input) => {
-    const id = Math.max(...users.map(e => +e.id)) + 1
+    let id = 1
+    if (users.length) {
+        id = Math.max(...users.map(e => +e.id)) + 1
+    }
     return {
         id,
         ...input
@@ -60,7 +63,21 @@ const root = {
             console.log("User was edited");
         });
         return newUsers
+    },
+    deleteUser: ({input}) => {
+        users = users.filter(user => +user.id !== +input.id)
+        fs.writeFile(fileName, JSON.stringify(users), err => {
+            if (err) {
+                console.log("ERROR")
+                throw err;
+            }
+            this.getAllUsers()
+            console.log("User was deleted");
+        });
+        return users
+        s
     }
+
 
 }
 
