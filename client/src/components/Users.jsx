@@ -46,7 +46,7 @@ const Users = () => {
                      style={{padding: "10px 50px", margin: "5px 10px"}}
                      onDoubleClick={() => setOpenModal(user)}
                 >
-                    {user.id}. {user.username} -_- {user.age}
+                    {user.id}. {user.username} --- {user.age}
                     <i style={{color: "red", fontSize: '25px', marginLeft: "20px"}}
                        className="bi bi-trash-fill"
                        onClick={e => deleteFnc(e, user.id)}

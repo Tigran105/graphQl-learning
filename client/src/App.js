@@ -14,11 +14,13 @@ function App() {
     console.log(oneUser, "+++++++++++++++++++++++++++++");
 
     return (
-
-        <div style={{maxWidth: "70vw", position:"relative"}}>
-            <CreateUser/>
-            <Users/>
-        </div>
+<>
+        <h3 style={{position: "absolute", left: "50px"}}>for change double click in user</h3>
+    <div style={{maxWidth: "70vw", position: "relative"}}>
+        <CreateUser/>
+        <Users/>
+    </div>
+</>
     );
 }
 

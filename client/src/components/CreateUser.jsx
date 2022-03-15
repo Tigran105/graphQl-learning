@@ -30,11 +30,15 @@ const CreateUser = () => {
             <input
                 value={username}
                 onChange={e => setUsername(e.target.value)}
-                type="text"/>
+                type="text"
+                placeholder="Name"
+            />
             <input
                 value={age}
                 onChange={e => setAge(+e.target.value)}
-                type="number"/>
+                type="number"
+                placeholder="Age"
+            />
             <div className="btns">
                 <button style={{float: "right"}}
                         onClick={(e) => addUser(e)}
