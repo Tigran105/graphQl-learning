@@ -78,14 +78,12 @@ const root = {
         return users
     },
     dndUsers: ({input}) => {
-        console.log(JSON.parse(input), "-------users", input);
         users = JSON.parse(input)
-        fs.writeFile(fileName, JSON.stringify(users), err => {
+        fs.writeFile(fileName, JSON.stringify(JSON.parse(input)), err => {
             if (err) {
                 console.log("ERROR")
                 throw err;
             }
-            this.getAllUsers()
             console.log("User was deleted");
         });
         return users

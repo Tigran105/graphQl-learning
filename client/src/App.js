@@ -16,7 +16,10 @@ function App() {
 
     return (
         <>
-            <h3 style={{position: "absolute", left: "50px"}}>for change double click in user</h3>
+            <h3 style={{position: "absolute", left: "50px"}}>
+                for change double click in user <br/> <hr/><hr/><hr/><hr/>
+                Drag And Drop
+            </h3>
             <div style={{maxWidth: "70vw", position: "relative"}}>
                 <CreateUser/>
                 <Users/>

@@ -41,10 +41,7 @@ const Users = () => {
     const dragAndDropFnc = (array) => {
         dndUsers({
             variables: {
-                input: {
-                    users: JSON.stringify(array)
-                }
-
+                input: JSON.stringify(array)
             }
         }).then(() => {
             refetch()

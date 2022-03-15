@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useMutation} from "@apollo/client";
 import {EDIT_USER} from "../mutation/user";
 
-const Modal = ({user, setOpen, refetch}) => {
+const  Modal = ({user, setOpen, refetch}) => {
     const [editUser] = useMutation(EDIT_USER)
 
     const [usernameValue, setUsernameValue] = useState(user.username)
@@ -26,6 +26,7 @@ const Modal = ({user, setOpen, refetch}) => {
         <div style={{
             position: "fixed",
             top: "0",
+            left:"0",
             width: "100vw",
             height: "100vh",
             background: "rgba(0,0,0,0.45)",
