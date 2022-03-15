@@ -21,3 +21,10 @@ export const DELETE_USER = gql`
             }
     }
 `
+export const DND_USERS = gql`
+    mutation dndUsers($input:[UserInput]){
+            dndUsers(input: $input) {
+                users
+            }
+    }
+`

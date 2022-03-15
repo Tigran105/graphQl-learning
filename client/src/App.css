@@ -44,7 +44,19 @@ form {
 }
 
 .user {
-  padding: 15px;
-  border: 1px solid lightgray;
-  margin-top: 10px;
+  border: 2px dashed black;
+  margin-top: 15px;
+  padding: 10px 0 10px 50px;
+  cursor: move;
+}
+.user i {
+  float: right;
+  cursor: pointer;
+}
+.nestable-item.is-dragging * {
+  opacity: 0.9 !important;
+}
+
+.nestable-drag-layer {
+  display: none;
 }

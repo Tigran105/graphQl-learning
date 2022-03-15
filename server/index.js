@@ -65,7 +65,21 @@ const root = {
         return newUsers
     },
     deleteUser: ({input}) => {
+        console.log("ste ylnuma")
         users = users.filter(user => +user.id !== +input.id)
+        fs.writeFile(fileName, JSON.stringify(users), err => {
+            if (err) {
+                console.log("ERROR")
+                throw err;
+            }
+            // this.getAllUsers()
+            console.log("User was deleted");
+        });
+        return users
+    },
+    dndUsers: ({input}) => {
+        console.log(JSON.parse(input), "-------users", input);
+        users = JSON.parse(input)
         fs.writeFile(fileName, JSON.stringify(users), err => {
             if (err) {
                 console.log("ERROR")
@@ -75,7 +89,8 @@ const root = {
             console.log("User was deleted");
         });
         return users
-        s
+
+
     }
 
 

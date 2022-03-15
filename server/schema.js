@@ -15,6 +15,7 @@ const schema = buildSchema(`
         content: String
     }
     
+    
     input UserInput {
         id: ID
         username: String!
@@ -22,6 +23,13 @@ const schema = buildSchema(`
         posts: [PostInput]
     }
     
+    type DndUsers {
+        users: [User] 
+        id: ID
+        username: String
+        age: Int
+        posts: [Post]
+    }
     input PostInput {
         id:ID
         title: String!
@@ -41,6 +49,7 @@ const schema = buildSchema(`
         createUser(input: UserInput): User 
         editUser(input: UserInput): User
         deleteUser(input: DeleteInput): User
+        dndUsers(input: [UserInput!]!): [DndUsers]
     }
     
 `)
