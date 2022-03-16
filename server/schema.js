@@ -45,7 +45,7 @@ const schema = buildSchema(`
         createUser(input: UserInput): User 
         editUser(input: UserInput): User
         deleteUser(input: DeleteInput): User
-        dndUsers(input: String ): DndUsers
+        dndUsers(input: String): DndUsers
     }
     
 `)
